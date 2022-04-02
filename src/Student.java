@@ -1,10 +1,21 @@
 public class Student {
 
+    private String surname;
+    private String name;
+
     private int day;
     private int month;
     private int year;
 
     private float gpa;
+
+    public String getSurname() {
+        return this.surname;
+    }
+
+    public String getName() {
+        return this.name;
+    }
 
     public int getDay() {
         return this.day;
@@ -27,7 +38,9 @@ public class Student {
         }
     }
 
-    public Student(int day, int month, int year, float gpa) {
+    public Student(String surname, String name, int day, int month, int year, float gpa) {
+        this.surname = surname;
+        this.name = name;
         this.day = day;
         this.month = month;
         this.year = year;

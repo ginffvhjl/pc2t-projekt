@@ -4,7 +4,9 @@ public class RunApp {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Database myDatabase = new Database();
+        Database studentDatabase = new Database();
+
+        int id;
 
         String name;
         String surname;
@@ -42,12 +44,30 @@ public class RunApp {
                     System.out.println(" 3  Kombinovaný obor");
 
                     int branch = Controls.onlyInt(sc);
-                    switch (branch) {
+
+                    id = Database.getID;
+                    System.out.printf(ConsoleColours.YELLOW + "Zadejte příjmení: " + ConsoleColours.RESET);
+                    sc.nextLine();
+                    surname = sc.nextLine();
+                    System.out.printf(ConsoleColours.YELLOW + "Zadejte jméno: " + ConsoleColours.RESET);
+                    name = sc.nextLine();
+                    System.out.printf(ConsoleColours.YELLOW + "Zadejte datum narození ve formátu DD.MM.YYYY: " +
+                            ConsoleColours.RESET);
+                    String line = sc.nextLine();
+                    String[] array = line.split(".");
+                    day = Integer.parseInt(array[0]);
+                    month = Integer.parseInt(array[1]);
+                    year = Integer.parseInt(array[2]);
+                    gpa = 0;
+                    studentDatabase.setStudent(id, surname, name, day, month, year, gpa);
+                    // TODO Choose school
+                    /*switch (branch) {
                         case 1:
 
-                    }
+                    }*/
+                    break;
                 case 11:
-                    myDatabase = new Database();
+                    studentDatabase = new Database();
                     break;
                 case 0:
                     run = false;
