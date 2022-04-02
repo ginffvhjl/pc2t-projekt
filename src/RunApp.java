@@ -6,6 +6,7 @@ public class RunApp {
         Scanner sc = new Scanner(System.in);
         Database studentDatabase = new Database();
 
+        int newID = 1;
         int id;
 
         String name;
@@ -15,6 +16,7 @@ public class RunApp {
         int month;
         int year;
 
+        int grade;
         float gpa;
 
         boolean run = true;
@@ -45,7 +47,6 @@ public class RunApp {
 
                     int branch = Controls.onlyInt(sc);
 
-                    id = Database.getID;
                     System.out.printf(ConsoleColours.YELLOW + "Zadejte příjmení: " + ConsoleColours.RESET);
                     sc.nextLine();
                     surname = sc.nextLine();
@@ -59,13 +60,23 @@ public class RunApp {
                     month = Integer.parseInt(array[1]);
                     year = Integer.parseInt(array[2]);
                     gpa = 0;
-                    studentDatabase.setStudent(id, surname, name, day, month, year, gpa);
+                    studentDatabase.setStudent(newID, surname, name, day, month, year, gpa);
+
                     // TODO Choose school
                     /*switch (branch) {
                         case 1:
 
                     }*/
+                    newID = newID + 1;
                     break;
+                case 2:
+                    System.out.printf(ConsoleColours.YELLOW + "Zadejte ID: " + ConsoleColours.RESET);
+                    id = Controls.onlyInt(sc);
+                    System.out.printf(ConsoleColours.YELLOW + "Zadejte známku: " + ConsoleColours.RESET);
+                    grade = Controls.onlyInt(sc);
+                    // TODO save ArrayList grades in Student
+                    //Student.grades
+
                 case 11:
                     studentDatabase = new Database();
                     break;

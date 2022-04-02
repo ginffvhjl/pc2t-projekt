@@ -46,10 +46,4 @@ public class Database {
             return false;
         }
     }
-    
-    public int getID(int id) {
-        id = database.size() + 1;
-        return id;
-    }
-
 }

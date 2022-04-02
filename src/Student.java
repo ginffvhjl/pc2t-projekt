@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Student {
 
     private String surname;
@@ -6,6 +8,8 @@ public class Student {
     private int day;
     private int month;
     private int year;
+
+    ArrayList<Integer> grades = new ArrayList<>();
 
     private float gpa;
 
@@ -30,12 +34,7 @@ public class Student {
     }
 
     public float getGpa() throws GPAException {
-        if (this.gpa == 0) {
-            throw new GPAException();
-        }
-        else {
-            return this.gpa;
-        }
+        return this.gpa;
     }
 
     public Student(String surname, String name, int day, int month, int year, float gpa) {
@@ -47,12 +46,17 @@ public class Student {
         this.gpa = gpa;
     }
 
-    public void writeGPA(float gpa) throws GPAException {
-        if (gpa >= 1 && gpa <= 5) {
-            this.gpa = gpa;
+    public void writeGPA(float gpa) {
+        if (grades.size() == 0) {
+            System.out.println(ConsoleColours.RED + "Suden nemá žádné známky" + ConsoleColours.RESET);
         }
         else {
-            throw new GPAException(gpa);
+            //gpa = grades.stream().mapToFloat(num->num).average().getAsFloat();
+            float sum = 0;
+            for (Integer num : grades) {
+                sum += num;
+            }
+		gpa = sum / grades.size();
         }
     }
 }
