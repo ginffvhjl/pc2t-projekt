@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class RunApp {
@@ -16,6 +17,7 @@ public class RunApp {
         int month;
         int year;
 
+        ArrayList<Integer> grades = new ArrayList<>();
         int grade;
         float gpa;
 
@@ -52,15 +54,15 @@ public class RunApp {
                     surname = sc.nextLine();
                     System.out.printf(ConsoleColours.YELLOW + "Zadejte jméno: " + ConsoleColours.RESET);
                     name = sc.nextLine();
-                    System.out.printf(ConsoleColours.YELLOW + "Zadejte datum narození ve formátu DD.MM.YYYY: " +
+                    System.out.printf(ConsoleColours.YELLOW + "Zadejte datum narození ve formátu DD/MM/YYYY: " +
                             ConsoleColours.RESET);
                     String line = sc.nextLine();
-                    String[] array = line.split(".");
+                    String[] array = line.split("/");
                     day = Integer.parseInt(array[0]);
                     month = Integer.parseInt(array[1]);
                     year = Integer.parseInt(array[2]);
                     gpa = 0;
-                    studentDatabase.setStudent(newID, surname, name, day, month, year, gpa);
+                    studentDatabase.setStudent(newID, surname, name, day, month, year, grades, gpa);
 
                     // TODO Choose school
                     /*switch (branch) {
@@ -70,13 +72,22 @@ public class RunApp {
                     newID = newID + 1;
                     break;
                 case 2:
+                    // TODO First check if ID is valid
+                    // TODO FIX: initiation of grade
+                    // TODO FIX: All students have same grades
                     System.out.printf(ConsoleColours.YELLOW + "Zadejte ID: " + ConsoleColours.RESET);
                     id = Controls.onlyInt(sc);
+                    sc.nextLine();
                     System.out.printf(ConsoleColours.YELLOW + "Zadejte známku: " + ConsoleColours.RESET);
-                    grade = Controls.onlyInt(sc);
-                    // TODO save ArrayList grades in Student
-                    //Student.grades
-
+                    grade = Controls.checkGrade(sc);
+                    studentDatabase.addGrades(id, grade);
+                    break;
+                case 4:
+                    System.out.printf(ConsoleColours.YELLOW + "Zadejte ID: " + ConsoleColours.RESET);
+                    sc.nextLine();
+                    id = Controls.onlyInt(sc);
+                    System.out.println(studentDatabase.writeStudent(id));
+                    break;
                 case 11:
                     studentDatabase = new Database();
                     break;
@@ -89,10 +100,5 @@ public class RunApp {
 
             }
         }
-
-
-
     }
-
-
 }

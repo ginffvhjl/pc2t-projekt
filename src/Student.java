@@ -33,22 +33,9 @@ public class Student {
         return this.year;
     }
 
-    public float getGpa() throws GPAException {
-        return this.gpa;
-    }
-
-    public Student(String surname, String name, int day, int month, int year, float gpa) {
-        this.surname = surname;
-        this.name = name;
-        this.day = day;
-        this.month = month;
-        this.year = year;
-        this.gpa = gpa;
-    }
-
-    public void writeGPA(float gpa) {
+    public float getGpa() {
         if (grades.size() == 0) {
-            System.out.println(ConsoleColours.RED + "Suden nemá žádné známky" + ConsoleColours.RESET);
+            return 0;
         }
         else {
             //gpa = grades.stream().mapToFloat(num->num).average().getAsFloat();
@@ -56,7 +43,22 @@ public class Student {
             for (Integer num : grades) {
                 sum += num;
             }
-		gpa = sum / grades.size();
+		    gpa = sum / grades.size();
+            return gpa;
         }
+    }
+
+    public Student(String surname, String name, int day, int month, int year, ArrayList<Integer> grades, float gpa) {
+        this.surname = surname;
+        this.name = name;
+        this.day = day;
+        this.month = month;
+        this.year = year;
+        this.grades = grades;
+        this.gpa = gpa;
+    }
+
+    public void addGrade(int grade) {
+        grades.add(grade);
     }
 }

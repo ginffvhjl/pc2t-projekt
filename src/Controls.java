@@ -17,4 +17,20 @@ public class Controls {
         }
         return number;
     }
+
+    public static int checkGrade(Scanner sc) {
+        int grade = onlyInt(sc);
+
+        while (true) {
+            if (grade < 1 && grade > 5) {
+                System.out.println(ConsoleColours.RED + "\nZadejte známku v rozsahu <1,5>: " + ConsoleColours.RESET);
+                sc.nextLine();
+                grade = onlyInt(sc);
+            }
+            else {
+                break;
+            }
+        }
+        return grade;
+    }
 }

@@ -1,7 +1,9 @@
-# Default ignored files
+# Folders
 /shelf/
-/workspace.xml
+/out/
 
 # Files
 /compiler.xml
 /vcs.xml
+/workspace.xml
+
