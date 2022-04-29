@@ -1,9 +1,7 @@
 package project;
 
-import project.branch.CombinedStudent;
-import project.branch.HumaneStudent;
-import project.branch.Student;
-import project.branch.TechnicalStudent;
+import project.ability.ZodiacSign;
+import project.branch.*;
 
 import java.util.Scanner;
 
@@ -48,11 +46,12 @@ public class RunApp {
 
                     int branch = Controls.onlyInt(sc);
 
-                    System.out.printf(ConsoleColours.CYAN+ "Surname: " + ConsoleColours.RESET);
+                    System.out.printf(ConsoleColours.CYAN + "Surname: " + ConsoleColours.RESET);
                     sc.nextLine();
                     surname = sc.nextLine();
                     System.out.printf(ConsoleColours.CYAN + "Name: " + ConsoleColours.RESET);
                     name = sc.nextLine();
+                    // TODO check if date is valid
                     System.out.printf(ConsoleColours.CYAN + "Date in format DD/MM/YYYY: " +
                             ConsoleColours.RESET);
                     String line = sc.nextLine();
@@ -85,8 +84,6 @@ public class RunApp {
                 case 2:
                     int grade;
                     // TODO First check if ID is valid
-                    // TODO FIX: initiation of grade
-                    // TODO FIX: All students have same grades
                     System.out.printf(ConsoleColours.CYAN + "Student's ID: " + ConsoleColours.RESET);
                     id = Controls.onlyInt(sc);
                     sc.nextLine();
@@ -107,6 +104,25 @@ public class RunApp {
                     id = Controls.onlyInt(sc);
                     student = studentDatabase.getStudent(id);
                     System.out.println(student);
+                    break;
+                case 5:
+                    System.out.printf(ConsoleColours.CYAN + "Student's ID: " + ConsoleColours.RESET);
+                    sc.nextLine();
+                    id = Controls.onlyInt(sc);
+                    student = studentDatabase.getStudent(id);
+                    if (student instanceof TechnicalBranch) {
+                        boolean bornInLeapYear = ((TechnicalBranch) student).isBornInLeapYear();
+                        if (bornInLeapYear) {
+                            System.out.println("I am born in leap year.");
+                        } else {
+                            System.out.println("I am not born in leap year");
+                        }
+                    }
+                    if (student instanceof HumaneBranch) {
+                        ZodiacSign zodiacSign = ((HumaneBranch) student).getZodiacSign();
+                        System.out.println("My zodiac sign is " + zodiacSign);
+                    }
+
                     break;
                 case 11:
                     studentDatabase = new Database();
