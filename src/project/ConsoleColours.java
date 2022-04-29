@@ -1,3 +1,5 @@
+package project;
+
 public class ConsoleColours {
 
     // Reset of colours

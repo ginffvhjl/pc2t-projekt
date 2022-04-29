@@ -1,3 +1,5 @@
+package project;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -62,7 +64,10 @@ public class RunApp {
                     month = Integer.parseInt(array[1]);
                     year = Integer.parseInt(array[2]);
                     gpa = 0;
-                    studentDatabase.setStudent(newID, surname, name, day, month, year, grades, gpa);
+                    switch (branch) {
+                        case 1:
+                            studentDatabase.setStudent(newID, surname, name, day, month, year, grades, gpa);
+                    }
 
                     // TODO Choose school
                     /*switch (branch) {

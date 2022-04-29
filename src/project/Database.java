@@ -1,3 +1,7 @@
+package project;
+
+import project.branch.Student;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +15,6 @@ public class Database {
     public Map<Integer, Student> database;
 
     public void setStudent(int id, String surname, String name, int day, int month, int year, ArrayList<Integer> grades, float gpa) {
-        database.put(id, new Student(surname, name, day, month, year, grades, gpa));
     }
 
     public void addGrades(int id, int grade) {
@@ -19,7 +22,7 @@ public class Database {
             database.get(id).addGrade(grade);
         }
         else {
-            System.out.println(ConsoleColours.RED + "Student s ID " + id + " neexistuje" + ConsoleColours.RESET);
+            System.out.println(ConsoleColours.RED + "project.branch.Student s ID " + id + " neexistuje" + ConsoleColours.RESET);
         }
     }
 
@@ -43,7 +46,7 @@ public class Database {
             return true;
         }
         else {
-            System.out.println(ConsoleColours.RED + "Student neexistuje" + ConsoleColours.RESET);
+            System.out.println(ConsoleColours.RED + "project.branch.Student neexistuje" + ConsoleColours.RESET);
             return false;
         }
     }
