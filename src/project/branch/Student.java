@@ -24,16 +24,6 @@ public abstract class Student {
         this.grades = new ArrayList<>();
     }
 
-    public Student(int id, String surname, String name, int day, int month, int year, ArrayList<Integer> grades) {
-        this.id = id;
-        this.surname = surname;
-        this.name = name;
-        this.day = day;
-        this.month = month;
-        this.year = year;
-        this.grades = grades;
-    }
-
     public int getId() {
         return this.id;
     }
@@ -58,7 +48,7 @@ public abstract class Student {
         return this.year;
     }
 
-    public float getGpa() {
+    public float getAvg() {
         if (grades.size() == 0) {
             return 0;
         } else {
@@ -67,18 +57,22 @@ public abstract class Student {
             for (Integer num : grades) {
                 sum += num;
             }
-            float gpa = sum / grades.size();
-            return gpa;
+            float avg = sum / grades.size();
+            return avg;
         }
     }
 
     // TODO school branch
     public String toString() {
         return "ID: " + this.id + "\nName and surname: " + this.name + " " + this.surname + "\nDate of birth: " +
-                this.day + ". " + this.month + ". " + this.year;
+                this.day + ". " + this.month + ". " + this.year + "\nAverage: " + getAvg();
     }
 
     public void addGrade(int grade) {
         grades.add(grade);
+    }
+
+    public void setGrades(ArrayList<Integer> grades) {
+        this.grades = grades;
     }
 }

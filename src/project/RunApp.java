@@ -16,11 +16,11 @@ public class RunApp {
         boolean run = true;
 
         while (run) {
-            System.out.println("Menu:\n");
+            System.out.println("\nMenu:");
             System.out.println(" 01  Add student");
             System.out.println(" 02  Add new grade");
             System.out.println(" 03  Delete student");
-            System.out.println(" 04  Informations about student");
+            System.out.println(" 04  Information about student");
             System.out.println(" 05  Student's abilities");
             System.out.println(" 06  List of all students");
             System.out.println(" 07  Average grade of each school branch");
@@ -92,7 +92,8 @@ public class RunApp {
                     sc.nextLine();
                     System.out.printf(ConsoleColours.CYAN + "Grade: " + ConsoleColours.RESET);
                     grade = Controls.checkGrade(sc);
-                    studentDatabase.addGrades(id, grade);
+                    student = studentDatabase.getStudent(id);
+                    student.addGrade(grade);
                     break;
                 case 4:
                     System.out.printf(ConsoleColours.CYAN + "Student's ID: " + ConsoleColours.RESET);
