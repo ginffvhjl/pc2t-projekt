@@ -95,6 +95,12 @@ public class RunApp {
                     student = studentDatabase.getStudent(id);
                     student.addGrade(grade);
                     break;
+                case 3:
+                    System.out.printf(ConsoleColours.CYAN + "Student's ID: " + ConsoleColours.RESET);
+                    sc.nextLine();
+                    id = Controls.onlyInt(sc);
+                    studentDatabase.removeStudent(id);
+                    break;
                 case 4:
                     System.out.printf(ConsoleColours.CYAN + "Student's ID: " + ConsoleColours.RESET);
                     sc.nextLine();

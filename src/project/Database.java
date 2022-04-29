@@ -38,4 +38,11 @@ public class Database {
         return student;
     }
 
+    public void removeStudent(int id) {
+        Student student = this.database.remove(id);
+        if (student == null) {
+            throw new IllegalArgumentException("Student does not exist.");
+        }
+    }
+
 }
