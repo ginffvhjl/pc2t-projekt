@@ -14,14 +14,35 @@ public class Database {
 
     public Map<Integer, Student> database;
 
-    public void setStudent(int id, String surname, String name, int day, int month, int year, ArrayList<Integer> grades, float gpa) {
+    public int getNextStudentId() {
+        int id = 0;
+        for (int i : this.database.keySet()) {
+            if (i > id) {
+                id = i;
+            }
+        }
+        return id + 1;
+    }
+
+    public void addStudent(Student student) {
+        if (database.containsKey(student.getId())) {
+            throw new IllegalArgumentException("Student already exists.");
+        }
+        this.database.put(student.getId(), student);
+    }
+
+    public Student getStudent(int id) {
+        Student student = this.database.get(id);
+        if (student == null) {
+            throw new IllegalArgumentException("Student does not exist.");
+        }
+        return student;
     }
 
     public void addGrades(int id, int grade) {
         if (database.containsKey(id)) {
             database.get(id).addGrade(grade);
-        }
-        else {
+        } else {
             System.out.println(ConsoleColours.RED + "project.branch.Student s ID " + id + " neexistuje" + ConsoleColours.RESET);
         }
     }
@@ -35,8 +56,7 @@ public class Database {
                 System.out.println(" Datum narození:  " + database.get(id).getDay() + ". " +
                         database.get(id).getMonth() + ". " + database.get(id).getYear());
                 System.out.println(" Průměr:  " + ConsoleColours.RED + "NEZADÁN" + ConsoleColours.RESET);
-            }
-            else {
+            } else {
                 System.out.println(" ID:  " + id);
                 System.out.println(" Jméno:  " + database.get(id).getSurname() + " " + database.get(id).getName());
                 System.out.println(" Datum narození:  " + database.get(id).getDay() + ". " +
@@ -44,8 +64,7 @@ public class Database {
                 System.out.println(" Průměr:  " + database.get(id).getGpa());
             }
             return true;
-        }
-        else {
+        } else {
             System.out.println(ConsoleColours.RED + "project.branch.Student neexistuje" + ConsoleColours.RESET);
             return false;
         }

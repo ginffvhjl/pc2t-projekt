@@ -3,6 +3,8 @@ package project.branch;
 import java.util.ArrayList;
 
 public abstract class Student {
+    private int id;
+
     private String surname;
     private String name;
 
@@ -12,7 +14,8 @@ public abstract class Student {
 
     ArrayList<Integer> grades;
 
-    public Student(String surname, String name, int day, int month, int year) {
+    public Student(int id, String surname, String name, int day, int month, int year) {
+        this.id = id;
         this.surname = surname;
         this.name = name;
         this.day = day;
@@ -21,13 +24,18 @@ public abstract class Student {
         this.grades = new ArrayList<>();
     }
 
-    public Student(String surname, String name, int day, int month, int year, ArrayList<Integer> grades) {
+    public Student(int id, String surname, String name, int day, int month, int year, ArrayList<Integer> grades) {
+        this.id = id;
         this.surname = surname;
         this.name = name;
         this.day = day;
         this.month = month;
         this.year = year;
         this.grades = grades;
+    }
+
+    public int getId() {
+        return this.id;
     }
 
     public String getSurname() {
@@ -62,6 +70,12 @@ public abstract class Student {
             float gpa = sum / grades.size();
             return gpa;
         }
+    }
+
+    // TODO school branch
+    public String toString() {
+        return "ID: " + this.id + "\nName and surname: " + this.name + " " + this.surname + "\nDate of birth: " +
+                this.day + ". " + this.month + ". " + this.year;
     }
 
     public void addGrade(int grade) {
