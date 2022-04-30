@@ -1,7 +1,9 @@
 package project;
 
+import java.util.Collection;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Controls {
 
@@ -31,6 +33,25 @@ public class Controls {
             break;
         }
         return grade;
+    }
+
+    public static int checkId(Scanner sc, Set<Integer> idsList) {
+        int id = onlyInt(sc);
+
+        while (true) {
+            for (int i : idsList) {
+                if (id == i) {
+                    continue;
+                } else {
+                    System.out.printf(ConsoleColours.RED + "Student neexistuje, zadejte existujícíh studenta: " +
+                            ConsoleColours.RESET);
+                    sc.nextLine();
+                    id = checkId(sc, idsList);
+                }
+            }
+            break;
+        }
+        return id;
     }
 
     // TODO Control o existence of user

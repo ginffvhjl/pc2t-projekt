@@ -5,6 +5,9 @@ import project.branch.*;
 
 import java.util.Scanner;
 
+import static project.Controls.checkId;
+import static project.Controls.onlyInt;
+
 public class RunApp {
 
     public static void main(String[] args) {
@@ -28,7 +31,7 @@ public class RunApp {
             System.out.println(" 11  Delete database");
             System.out.println(" 00  Exit\n");
 
-            int option = Controls.onlyInt(sc);
+            int option = onlyInt(sc);
 
             switch (option) {
                 case 1:
@@ -44,7 +47,7 @@ public class RunApp {
                     System.out.println(" 2  Humane branch");
                     System.out.println(" 3  Combined branch");
 
-                    int branch = Controls.onlyInt(sc);
+                    int branch = onlyInt(sc);
 
                     System.out.printf(ConsoleColours.CYAN + "Surname: " + ConsoleColours.RESET);
                     sc.nextLine();
@@ -83,9 +86,8 @@ public class RunApp {
                     break;
                 case 2:
                     int grade;
-                    // TODO Add student's id validation
                     System.out.printf(ConsoleColours.CYAN + "Student's ID: " + ConsoleColours.RESET);
-                    id = Controls.onlyInt(sc);
+                    id = checkId(sc, studentDatabase.database.keySet());
                     sc.nextLine();
                     System.out.printf(ConsoleColours.CYAN + "Grade: " + ConsoleColours.RESET);
                     grade = Controls.checkGrade(sc);
@@ -93,25 +95,22 @@ public class RunApp {
                     student.addGrade(grade);
                     break;
                 case 3:
-                    // TODO Add student's id validation
                     System.out.printf(ConsoleColours.CYAN + "Student's ID: " + ConsoleColours.RESET);
                     sc.nextLine();
-                    id = Controls.onlyInt(sc);
+                    id = checkId(sc, studentDatabase.database.keySet());
                     studentDatabase.removeStudent(id);
                     break;
                 case 4:
-                    // TODO Add student's id validation
                     System.out.printf(ConsoleColours.CYAN + "Student's ID: " + ConsoleColours.RESET);
                     sc.nextLine();
-                    id = Controls.onlyInt(sc);
+                    id = checkId(sc, studentDatabase.database.keySet());
                     student = studentDatabase.getStudent(id);
                     System.out.println(student);
                     break;
                 case 5:
-                    // TODO Add student's id validation
                     System.out.printf(ConsoleColours.CYAN + "Student's ID: " + ConsoleColours.RESET);
                     sc.nextLine();
-                    id = Controls.onlyInt(sc);
+                    id = checkId(sc, studentDatabase.database.keySet());
                     student = studentDatabase.getStudent(id);
                     if (student instanceof TechnicalBranch) {
                         boolean bornInLeapYear = ((TechnicalBranch) student).isBornInLeapYear();
@@ -141,3 +140,4 @@ public class RunApp {
         }
     }
 }
+
