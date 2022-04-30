@@ -46,7 +46,7 @@ public class Database {
     }
 
     public void printAllStudents() {
-        for (int i = 1; i < this.database.size() + 1; i++) {
+        for (int i : this.database.keySet()) {
             System.out.println(getStudent(i));
         }
     }

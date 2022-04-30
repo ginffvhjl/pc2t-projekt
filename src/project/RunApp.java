@@ -51,7 +51,7 @@ public class RunApp {
                     surname = sc.nextLine();
                     System.out.printf(ConsoleColours.CYAN + "Name: " + ConsoleColours.RESET);
                     name = sc.nextLine();
-                    // TODO check if date is valid
+                    // TODO Add date validation
                     System.out.printf(ConsoleColours.CYAN + "Date in format DD/MM/YYYY: " +
                             ConsoleColours.RESET);
                     String line = sc.nextLine();
@@ -83,7 +83,7 @@ public class RunApp {
                     break;
                 case 2:
                     int grade;
-                    // TODO First check if ID is valid
+                    // TODO Add student's id validation
                     System.out.printf(ConsoleColours.CYAN + "Student's ID: " + ConsoleColours.RESET);
                     id = Controls.onlyInt(sc);
                     sc.nextLine();
@@ -93,12 +93,14 @@ public class RunApp {
                     student.addGrade(grade);
                     break;
                 case 3:
+                    // TODO Add student's id validation
                     System.out.printf(ConsoleColours.CYAN + "Student's ID: " + ConsoleColours.RESET);
                     sc.nextLine();
                     id = Controls.onlyInt(sc);
                     studentDatabase.removeStudent(id);
                     break;
                 case 4:
+                    // TODO Add student's id validation
                     System.out.printf(ConsoleColours.CYAN + "Student's ID: " + ConsoleColours.RESET);
                     sc.nextLine();
                     id = Controls.onlyInt(sc);
@@ -106,6 +108,7 @@ public class RunApp {
                     System.out.println(student);
                     break;
                 case 5:
+                    // TODO Add student's id validation
                     System.out.printf(ConsoleColours.CYAN + "Student's ID: " + ConsoleColours.RESET);
                     sc.nextLine();
                     id = Controls.onlyInt(sc);

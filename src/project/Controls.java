@@ -33,5 +33,6 @@ public class Controls {
         return grade;
     }
 
-    // TODO Non existing user exception
+    // TODO Control o existence of user
+    // TODO Date control
 }
