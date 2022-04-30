@@ -2,8 +2,7 @@ package project;
 
 import project.branch.Student;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Database {
 
@@ -45,10 +44,10 @@ public class Database {
         }
     }
 
-    public void printAllStudents() {
-        for (int i : this.database.keySet()) {
-            System.out.println(getStudent(i));
-        }
-    }
+    public void printAllStudentsByAlphabet() {
 
+        ArrayList<Student> students = new ArrayList<>(database.values());
+        Collections.sort(students);
+        students.forEach(System.out::println);
+    }
 }

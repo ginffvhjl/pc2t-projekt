@@ -1,6 +1,5 @@
 package project;
 
-import java.util.Collection;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Set;
@@ -54,6 +53,5 @@ public class Controls {
         return id;
     }
 
-    // TODO Control o existence of user
     // TODO Date control
 }

@@ -32,15 +32,15 @@ public class RunApp {
             System.out.println(" 00  Exit\n");
 
             int option = onlyInt(sc);
+            int id;
+            String name;
+            String surname;
+            int day;
+            int month;
+            int year;
 
             switch (option) {
                 case 1:
-                    int id;
-                    String name;
-                    String surname;
-                    int day;
-                    int month;
-                    int year;
 
                     System.out.println("\nChoose school branch: ");
                     System.out.println(" 1  Technic branch");
@@ -125,7 +125,7 @@ public class RunApp {
                         System.out.println("My zodiac sign is " + zodiacSign);
                     }
                 case 6:
-                    studentDatabase.printAllStudents();
+                    studentDatabase.printAllStudentsByAlphabet();
                     break;
                 case 11:
                     studentDatabase = new Database();

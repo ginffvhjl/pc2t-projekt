@@ -4,7 +4,7 @@ import project.ConsoleColours;
 
 import java.util.ArrayList;
 
-public abstract class Student {
+public abstract class Student implements Comparable<Student>{
     private int id;
 
     private String surname;
@@ -54,7 +54,6 @@ public abstract class Student {
         if (grades.size() == 0) {
             return 0;
         } else {
-            //gpa = grades.stream().mapToFloat(num->num).average().getAsFloat();
             float sum = 0;
             for (Integer num : grades) {
                 sum += num;
@@ -69,6 +68,13 @@ public abstract class Student {
         return ConsoleColours.CYAN + "ID: " + this.id + ConsoleColours.RESET + "\nName and surname: " + this.name +
                 " " + this.surname + "\nDate of birth: " + this.day + ". " + this.month + ". " + this.year +
                 "\nAverage: " + getAvg() + "\n";
+    }
+
+    @Override
+    public int compareTo(Student otherStudent) {
+        String thisName = this.surname + " " + this.name + " " + this.id;
+        String otherName = otherStudent.surname + " " + otherStudent.name + " " + this.id;
+        return thisName.compareTo(otherName);
     }
 
     public void addGrade(int grade) {
