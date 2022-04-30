@@ -10,9 +10,8 @@ public class Controls {
 
         try {
             number = sc.nextInt();
-        }
-        catch (InputMismatchException e) {
-            System.out.println(ConsoleColours.RED + "\nNezadali jste celé číslo" + ConsoleColours.RESET);
+        } catch (InputMismatchException e) {
+            System.out.println(ConsoleColours.RED + "Nezadali jste celé číslo" + ConsoleColours.RESET);
             System.out.println("Zadejte znovu volbu: ");
             sc.nextLine();
             number = onlyInt(sc);
@@ -24,14 +23,12 @@ public class Controls {
         int grade = onlyInt(sc);
 
         while (true) {
-            if (grade < 1 && grade > 5) {
-                System.out.println(ConsoleColours.RED + "\nZadejte známku v rozsahu <1,5>: " + ConsoleColours.RESET);
+            if (grade <= 1 || grade >= 5) {
+                System.out.printf(ConsoleColours.RED + "Zadejte známku v rozsahu <1,5>: " + ConsoleColours.RESET);
                 sc.nextLine();
-                grade = onlyInt(sc);
+                grade = checkGrade(sc);
             }
-            else {
-                break;
-            }
+            break;
         }
         return grade;
     }
