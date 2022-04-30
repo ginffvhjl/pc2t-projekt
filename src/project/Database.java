@@ -45,4 +45,10 @@ public class Database {
         }
     }
 
+    public void printAllStudents() {
+        for (int i = 1; i < this.database.size() + 1; i++) {
+            System.out.println(getStudent(i));
+        }
+    }
+
 }

@@ -26,7 +26,7 @@ public class RunApp {
             System.out.println(" 09  Load database from file");
             System.out.println(" 10  Save database in file");
             System.out.println(" 11  Delete database");
-            System.out.println(" 00  Exit\n\n");
+            System.out.println(" 00  Exit\n");
 
             int option = Controls.onlyInt(sc);
 
@@ -39,7 +39,7 @@ public class RunApp {
                     int month;
                     int year;
 
-                    System.out.println("Choose school branch: ");
+                    System.out.println("\nChoose school branch: ");
                     System.out.println(" 1  Technic branch");
                     System.out.println(" 2  Humane branch");
                     System.out.println(" 3  Combined branch");
@@ -122,7 +122,8 @@ public class RunApp {
                         ZodiacSign zodiacSign = ((HumaneBranch) student).getZodiacSign();
                         System.out.println("My zodiac sign is " + zodiacSign);
                     }
-
+                case 6:
+                    studentDatabase.printAllStudents();
                     break;
                 case 11:
                     studentDatabase = new Database();
@@ -133,7 +134,6 @@ public class RunApp {
                 default:
                     run = true;
                     break;
-
             }
         }
     }

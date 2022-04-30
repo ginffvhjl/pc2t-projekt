@@ -1,5 +1,7 @@
 package project.branch;
 
+import project.ConsoleColours;
+
 import java.util.ArrayList;
 
 public abstract class Student {
@@ -64,8 +66,9 @@ public abstract class Student {
 
     // TODO school branch
     public String toString() {
-        return "ID: " + this.id + "\nName and surname: " + this.name + " " + this.surname + "\nDate of birth: " +
-                this.day + ". " + this.month + ". " + this.year + "\nAverage: " + getAvg();
+        return ConsoleColours.CYAN + "ID: " + this.id + ConsoleColours.RESET + "\nName and surname: " + this.name +
+                " " + this.surname + "\nDate of birth: " + this.day + ". " + this.month + ". " + this.year +
+                "\nAverage: " + getAvg() + "\n";
     }
 
     public void addGrade(int grade) {
