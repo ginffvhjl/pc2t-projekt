@@ -12,8 +12,8 @@ public class Controls {
         try {
             number = sc.nextInt();
         } catch (InputMismatchException e) {
-            System.out.println(ConsoleColours.RED + "Nezadali jste celé číslo" + ConsoleColours.RESET);
-            System.out.println("Zadejte znovu volbu: ");
+            System.out.println(ConsoleColours.RED + "The number must be whole number." + ConsoleColours.RESET);
+            System.out.println("Enter again: ");
             sc.nextLine();
             number = onlyInt(sc);
         }
@@ -24,7 +24,7 @@ public class Controls {
         int grade = onlyInt(sc);
 
         while (true) {
-            if (grade <= 1 || grade >= 5) {
+            if (grade < 1 || grade > 5) {
                 System.out.printf(ConsoleColours.RED + "Enter grade <1,5>: " + ConsoleColours.RESET);
                 sc.nextLine();
                 grade = checkGrade(sc);
@@ -38,10 +38,21 @@ public class Controls {
         int id = onlyInt(sc);
 
         if (!idsList.contains(id)) {
-            System.out.printf("Student does not exist, enter valid student: ");
+            System.out.println("Student does not exist.");
+            System.out.printf("Enter valid student: ");
             id = checkId(sc, idsList);
         }
         return id;
+    }
+
+    public static boolean checkIdBoolean(Scanner sc, Set<Integer> idsList) {
+        int id = onlyInt(sc);
+
+        if (!idsList.contains(id)) {
+            System.out.println("Student does not exist.");
+            return false;
+        }
+        return true;
     }
 
     // TODO Date control
