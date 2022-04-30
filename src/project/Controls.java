@@ -25,7 +25,7 @@ public class Controls {
 
         while (true) {
             if (grade <= 1 || grade >= 5) {
-                System.out.printf(ConsoleColours.RED + "Zadejte známku v rozsahu <1,5>: " + ConsoleColours.RESET);
+                System.out.printf(ConsoleColours.RED + "Enter grade <1,5>: " + ConsoleColours.RESET);
                 sc.nextLine();
                 grade = checkGrade(sc);
             }
@@ -37,18 +37,9 @@ public class Controls {
     public static int checkId(Scanner sc, Set<Integer> idsList) {
         int id = onlyInt(sc);
 
-        while (true) {
-            for (int i : idsList) {
-                if (id == i) {
-                    continue;
-                } else {
-                    System.out.printf(ConsoleColours.RED + "Student neexistuje, zadejte existujícíh studenta: " +
-                            ConsoleColours.RESET);
-                    sc.nextLine();
-                    id = checkId(sc, idsList);
-                }
-            }
-            break;
+        if (!idsList.contains(id)) {
+            System.out.printf("Student does not exist, enter valid student: ");
+            id = checkId(sc, idsList);
         }
         return id;
     }
