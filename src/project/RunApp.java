@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 import static project.Controls.checkId;
 import static project.Controls.onlyInt;
-import static project.Controls.checkIdBoolean;
 
 public class RunApp {
 
@@ -125,16 +124,17 @@ public class RunApp {
                         ZodiacSign zodiacSign = ((HumaneBranch) student).getZodiacSign();
                         System.out.println("My zodiac sign is " + zodiacSign);
                     }
+                    break;
                 case 6:
                     studentDatabase.printAllStudentsByAlphabet();
                     break;
                 case 7:
                     System.out.println("Average of humane branch is "+ ConsoleColours.CYAN +
-                            studentDatabase.getHumaneAvg() + ConsoleColours.RESET);
+                            studentDatabase.getBranchAvg(HumaneStudent.class) + ConsoleColours.RESET);
                     System.out.println("Average of technical branch is "+ ConsoleColours.CYAN +
-                            studentDatabase.getTechnicalAvg() + ConsoleColours.RESET);
+                            studentDatabase.getBranchAvg(TechnicalStudent.class) + ConsoleColours.RESET);
                     System.out.println("Average of combined branch is "+ ConsoleColours.CYAN +
-                            studentDatabase.getCombinedAvg() + ConsoleColours.RESET);
+                            studentDatabase.getBranchAvg(CombinedStudent.class) + ConsoleColours.RESET);
                     break;
                 case 11:
                     studentDatabase = new Database();
