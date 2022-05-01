@@ -1,10 +1,14 @@
 package project;
 
+import project.branch.CombinedStudent;
+import project.branch.HumaneStudent;
 import project.branch.Student;
+import project.branch.TechnicalStudent;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Database {
 
@@ -85,6 +89,51 @@ public class Database {
                         student.getName() + ";" + student.getDay() + ";" + student.getMonth() + ";" +
                         student.getYear() + ";" + student.getGrades() + "\n");
             }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void loadFromFile(String file, Database database) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                Student student;
+                String[] array = line.split(";");
+                String schoolBranch = array[0];
+                int id = Integer.parseInt(array[1]);
+                String surname = array[2];
+                String name = array[3];
+                int day = Integer.parseInt(array[4]);
+                int month = Integer.parseInt(array[5]);
+                int year = Integer.parseInt(array[6]);
+                ArrayList<Integer> grades = new ArrayList<>();
+                Pattern pattern = Pattern.compile("\\d");
+                Matcher matcher = pattern.matcher(array[7]);
+                while (matcher.find()) {
+                    grades.add(Integer.valueOf(matcher.group()));
+                }
+                if (schoolBranch.equals("class project.branch.HumaneStudent")) {
+                    student = new HumaneStudent(id, surname, name, day, month, year);
+                    student.setGrades(grades);
+                    database.addStudent(student);
+                }
+                if (schoolBranch.equals("class project.branch.TechnicalStudent")) {
+                    student = new TechnicalStudent(id, surname, name, day, month, year);
+                    student.setGrades(grades);
+                    database.addStudent(student);
+                }
+                if (schoolBranch.equals("class project.branch.CombinedStudent")) {
+                    student = new CombinedStudent(id, surname, name, day, month, year);
+                    student.setGrades(grades);
+                    database.addStudent(student);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File does not exist.");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

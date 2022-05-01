@@ -64,18 +64,10 @@ public class RunApp {
 
                     Student student = null;
                     switch (branch) {
-                        case 1:
-                            student = new TechnicalStudent(id, surname, name, day, month, year);
-                            break;
-                        case 2:
-                            student = new HumaneStudent(id, surname, name, day, month, year);
-                            break;
-                        case 3:
-                            student = new CombinedStudent(id, surname, name, day, month, year);
-                            break;
-                        default:
-                            System.out.println("Incorrect input.");
-                            break;
+                        case 1 -> student = new TechnicalStudent(id, surname, name, day, month, year);
+                        case 2 -> student = new HumaneStudent(id, surname, name, day, month, year);
+                        case 3 -> student = new CombinedStudent(id, surname, name, day, month, year);
+                        default -> System.out.println("Incorrect input.");
                     }
                     if (student != null) {
                         studentDatabase.addStudent(student);
@@ -142,13 +134,20 @@ public class RunApp {
                     System.out.println("Combined branch: " + ConsoleColours.CYAN +
                             studentDatabase.getBranchSize(CombinedStudent.class) + ConsoleColours.RESET);
                     break;
+                case 9:
+                    sc.nextLine();
+                    System.out.printf("Enter file name: ");
+                    String fileName = sc.nextLine();
+                    studentDatabase.loadFromFile(fileName, studentDatabase);
+                    System.out.println(ConsoleColours.GREEN + "Database loaded." + ConsoleColours.RESET);
+                    break;
                 case 10:
                     try {
                         System.out.println(ConsoleColours.RED + "Existing file will be overwritten." +
                                 ConsoleColours.RESET);
                         sc.nextLine();
                         System.out.printf("Enter file name: ");
-                        String fileName = sc.nextLine();
+                        fileName = sc.nextLine();
                         studentDatabase.saveToFile(fileName);
                     } catch (Exception e) {
                         e.printStackTrace();
