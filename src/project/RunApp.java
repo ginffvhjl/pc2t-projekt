@@ -5,8 +5,7 @@ import project.branch.*;
 
 import java.util.Scanner;
 
-import static project.Controls.checkId;
-import static project.Controls.onlyInt;
+import static project.Controls.*;
 
 public class RunApp {
 
@@ -57,7 +56,7 @@ public class RunApp {
                     // TODO Add date validation
                     System.out.printf(ConsoleColours.CYAN + "Date in format DD/MM/YYYY: " +
                             ConsoleColours.RESET);
-                    String line = sc.nextLine();
+                    String line = checkDateFormate(sc);
                     String[] array = line.split("/");
                     day = Integer.parseInt(array[0]);
                     month = Integer.parseInt(array[1]);

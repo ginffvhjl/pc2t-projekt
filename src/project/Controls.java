@@ -55,5 +55,22 @@ public class Controls {
         return true;
     }
 
+    public static String checkDateFormate(Scanner sc) {
+        String line;
+        try {
+            line = sc.nextLine();
+            String[] array = line.split("/");
+            int day = Integer.parseInt(array[0]);
+            int month = Integer.parseInt(array[1]);
+            int year = Integer.parseInt(array[2]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println(ConsoleColours.RED + "Wrong formate of date." + ConsoleColours.RESET);
+            System.out.printf(ConsoleColours.CYAN + "Date in format DD/MM/YYYY: " +
+                    ConsoleColours.RESET);
+            line = checkDateFormate(sc);
+        }
+        return line;
+    }
+
     // TODO Date control
 }
