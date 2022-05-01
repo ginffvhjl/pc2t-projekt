@@ -65,4 +65,14 @@ public class Database {
         if (count == 0) return 0.0F;
         return sum / count;
     }
+
+    public int getBranchSize(Class branch) {
+        int count = 0;
+        for (Student student : this.database.values()) {
+            if (student.getClass() == branch) {
+                count += 1;
+            }
+        }
+        return count;
+    }
 }

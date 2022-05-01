@@ -128,12 +128,20 @@ public class RunApp {
                     studentDatabase.printAllStudentsByAlphabet();
                     break;
                 case 7:
-                    System.out.println("Average of humane branch is "+ ConsoleColours.CYAN +
+                    System.out.println("Average of humane branch is " + ConsoleColours.CYAN +
                             studentDatabase.getBranchAvg(HumaneStudent.class) + ConsoleColours.RESET);
-                    System.out.println("Average of technical branch is "+ ConsoleColours.CYAN +
+                    System.out.println("Average of technical branch is " + ConsoleColours.CYAN +
                             studentDatabase.getBranchAvg(TechnicalStudent.class) + ConsoleColours.RESET);
-                    System.out.println("Average of combined branch is "+ ConsoleColours.CYAN +
+                    System.out.println("Average of combined branch is " + ConsoleColours.CYAN +
                             studentDatabase.getBranchAvg(CombinedStudent.class) + ConsoleColours.RESET);
+                    break;
+                case 8:
+                    System.out.println("Humane branch: " + ConsoleColours.CYAN +
+                            studentDatabase.getBranchSize(HumaneStudent.class) + ConsoleColours.RESET);
+                    System.out.println("Technical branch: " + ConsoleColours.CYAN +
+                            studentDatabase.getBranchSize(TechnicalStudent.class) + ConsoleColours.RESET);
+                    System.out.println("Combined branch: " + ConsoleColours.CYAN +
+                            studentDatabase.getBranchSize(CombinedStudent.class) + ConsoleColours.RESET);
                     break;
                 case 11:
                     studentDatabase = new Database();
