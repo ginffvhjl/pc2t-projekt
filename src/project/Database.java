@@ -2,6 +2,8 @@ package project;
 
 import project.branch.Student;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 
 public class Database {
@@ -74,5 +76,17 @@ public class Database {
             }
         }
         return count;
+    }
+
+    public void saveToFile(String file) {
+        try (PrintWriter writer = new PrintWriter(file)) {
+            for (Student student : this.database.values()) {
+                writer.append(student.getClass() + ";" + student.getId() + ";" + student.getSurname() + ";" +
+                        student.getName() + ";" + student.getDay() + ";" + student.getMonth() + ";" +
+                        student.getYear() + ";" + student.getGrades() + "\n");
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -50,6 +50,10 @@ public abstract class Student implements Comparable<Student>{
         return this.year;
     }
 
+    public ArrayList<Integer> getGrades() {
+        return this.grades;
+    }
+
     public float getAvg() {
         if (grades.size() == 0) {
             return 0;

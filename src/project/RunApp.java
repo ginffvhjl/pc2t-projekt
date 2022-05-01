@@ -143,6 +143,18 @@ public class RunApp {
                     System.out.println("Combined branch: " + ConsoleColours.CYAN +
                             studentDatabase.getBranchSize(CombinedStudent.class) + ConsoleColours.RESET);
                     break;
+                case 10:
+                    try {
+                        System.out.println(ConsoleColours.RED + "Existing file will be overwritten." +
+                                ConsoleColours.RESET);
+                        sc.nextLine();
+                        System.out.printf("Enter file name: ");
+                        String fileName = sc.nextLine();
+                        studentDatabase.saveToFile(fileName);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
                 case 11:
                     studentDatabase = new Database();
                     break;
