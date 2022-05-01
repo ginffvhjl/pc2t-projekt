@@ -4,7 +4,7 @@ import project.ConsoleColours;
 
 import java.util.ArrayList;
 
-public abstract class Student implements Comparable<Student>{
+public abstract class Student implements Comparable<Student> {
     private int id;
 
     private String surname;
