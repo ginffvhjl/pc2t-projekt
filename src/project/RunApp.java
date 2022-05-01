@@ -138,6 +138,7 @@ public class RunApp {
                     sc.nextLine();
                     System.out.printf("Enter file name: ");
                     String fileName = sc.nextLine();
+                    studentDatabase = new Database();
                     studentDatabase.loadFromFile(fileName, studentDatabase);
                     System.out.println(ConsoleColours.GREEN + "Database loaded." + ConsoleColours.RESET);
                     break;

@@ -48,16 +48,6 @@ public class Controls {
         return id;
     }
 
-    public static boolean checkIdBoolean(Scanner sc, Set<Integer> idsList) {
-        int id = onlyInt(sc);
-
-        if (!idsList.contains(id)) {
-            System.out.println("Student does not exist.");
-            return false;
-        }
-        return true;
-    }
-
     public static LocalDate checkDateFormate(Scanner sc) {
         String line;
         LocalDate result = null;

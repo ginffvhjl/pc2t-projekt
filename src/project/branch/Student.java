@@ -69,8 +69,10 @@ public abstract class Student implements Comparable<Student>{
 
     // TODO school branch
     public String toString() {
-        return ConsoleColours.CYAN + "ID: " + this.id + ConsoleColours.RESET + "\nName and surname: " + this.name +
-                " " + this.surname + "\nDate of birth: " + this.day + ". " + this.month + ". " + this.year +
+        return ConsoleColours.CYAN + "ID: " + this.id + ConsoleColours.RESET +
+                "\nName and surname: " + this.name + " " + this.surname +
+                "\nDate of birth: " + this.day + ". " + this.month + ". " + this.year +
+                "\nSchool branch: " + this.getBranchName() +
                 "\nAverage: " + getAvg() + "\n";
     }
 
@@ -88,4 +90,6 @@ public abstract class Student implements Comparable<Student>{
     public void setGrades(ArrayList<Integer> grades) {
         this.grades = grades;
     }
+
+    public abstract String getBranchName();
 }

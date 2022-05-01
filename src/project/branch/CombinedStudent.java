@@ -8,6 +8,11 @@ public class CombinedStudent extends Student implements TechnicalBranch, HumaneB
     HumaneAbility humaneAbility = new HumaneAbility();
     TechnicalAbility technicalAbility = new TechnicalAbility();
 
+    @Override
+    public String getBranchName() {
+        return "Combined";
+    }
+
     public CombinedStudent(int id, String surname, String name, int day, int month, int year) {
         super(id, surname, name, day, month, year);
     }
@@ -19,4 +24,5 @@ public class CombinedStudent extends Student implements TechnicalBranch, HumaneB
     public boolean isBornInLeapYear() {
         return this.technicalAbility.isLeapYear(this.getYear());
     }
+
 }
