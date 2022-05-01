@@ -1,6 +1,9 @@
 package project;
 
+import project.branch.CombinedStudent;
+import project.branch.HumaneStudent;
 import project.branch.Student;
+import project.branch.TechnicalStudent;
 
 import java.util.*;
 
@@ -49,5 +52,37 @@ public class Database {
         ArrayList<Student> students = new ArrayList<>(database.values());
         Collections.sort(students);
         students.forEach(System.out::println);
+    }
+
+    public float getHumaneAvg() {
+        ArrayList<HumaneStudent> humaneStudents = new ArrayList<>();
+
+        float humaneBranchAvg = 0;
+        for (int i = 1; i < humaneStudents.size() + 1; i++) {
+            humaneBranchAvg = (humaneBranchAvg + humaneStudents.get(i).getAvg());
+        }
+        humaneBranchAvg = humaneBranchAvg / humaneStudents.size();
+        return humaneBranchAvg;
+    }
+
+    public float getTechnicalAvg() {
+        ArrayList<TechnicalStudent> technicalStudents = new ArrayList<>();
+        float technicalBranchAvg = 0;
+        for (int i = 1; i < technicalStudents.size() + 1; i++) {
+            technicalBranchAvg = (technicalBranchAvg + technicalStudents.get(i).getAvg());
+        }
+        technicalBranchAvg = technicalBranchAvg / technicalStudents.size();
+        return technicalBranchAvg;
+    }
+
+    public float getCombinedAvg() {
+        ArrayList<CombinedStudent> combinedStudents = new ArrayList<>();
+
+        float combinedBranchAvg = 0;
+        for (int i = 1; i < combinedStudents.size() + 1; i++) {
+            combinedBranchAvg = (combinedBranchAvg + combinedStudents.get(i).getAvg());
+        }
+        combinedBranchAvg = combinedStudents.size();
+        return combinedBranchAvg;
     }
 }
