@@ -3,6 +3,7 @@ package project;
 import project.ability.ZodiacSign;
 import project.branch.*;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 import static project.Controls.*;
@@ -53,14 +54,12 @@ public class RunApp {
                     surname = sc.nextLine();
                     System.out.printf(ConsoleColours.CYAN + "Name: " + ConsoleColours.RESET);
                     name = sc.nextLine();
-                    // TODO Add date validation
                     System.out.printf(ConsoleColours.CYAN + "Date in format DD/MM/YYYY: " +
                             ConsoleColours.RESET);
-                    String line = checkDateFormate(sc);
-                    String[] array = line.split("/");
-                    day = Integer.parseInt(array[0]);
-                    month = Integer.parseInt(array[1]);
-                    year = Integer.parseInt(array[2]);
+                    LocalDate date = checkDateFormate(sc);
+                    day = date.getDayOfMonth();
+                    month = date.getMonth().ordinal() + 1;
+                    year = date.getYear();
                     id = studentDatabase.getNextStudentId();
 
                     Student student = null;

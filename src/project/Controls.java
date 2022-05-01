@@ -1,5 +1,8 @@
 package project;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Set;
@@ -55,22 +58,19 @@ public class Controls {
         return true;
     }
 
-    public static String checkDateFormate(Scanner sc) {
+    public static LocalDate checkDateFormate(Scanner sc) {
         String line;
-        try {
-            line = sc.nextLine();
-            String[] array = line.split("/");
-            int day = Integer.parseInt(array[0]);
-            int month = Integer.parseInt(array[1]);
-            int year = Integer.parseInt(array[2]);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println(ConsoleColours.RED + "Wrong formate of date." + ConsoleColours.RESET);
-            System.out.printf(ConsoleColours.CYAN + "Date in format DD/MM/YYYY: " +
-                    ConsoleColours.RESET);
-            line = checkDateFormate(sc);
+        LocalDate result = null;
+        while (result == null) {
+            try {
+                line = sc.nextLine();
+                result = LocalDate.parse(line, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            } catch (DateTimeParseException e) {
+                System.out.println(ConsoleColours.RED + "Wrong date format." + ConsoleColours.RESET);
+                System.out.println(ConsoleColours.CYAN + "Date in format DD/MM/YYYY: " + ConsoleColours.RESET);
+                result = (checkDateFormate(sc));
+            }
         }
-        return line;
+        return result;
     }
-
-    // TODO Date control
 }
