@@ -86,7 +86,7 @@ public class Database {
     public void saveToFile(String file) {
         try (PrintWriter writer = new PrintWriter(file)) {
             for (Student student : this.database.values()) {
-                writer.append(student.getClass() + ";" + student.getId() + ";" + student.getSurname() + ";" +
+                writer.append(student.getBranchName() + ";" + student.getId() + ";" + student.getSurname() + ";" +
                         student.getName() + ";" + student.getDay() + ";" + student.getMonth() + ";" +
                         student.getYear() + ";" + student.getGrades() + "\n");
             }
@@ -117,17 +117,17 @@ public class Database {
                 while (matcher.find()) {
                     grades.add(Integer.valueOf(matcher.group()));
                 }
-                if (schoolBranch.equals("class project.branch.HumaneStudent")) {
+                if (schoolBranch.equals("Humane")) {
                     student = new HumaneStudent(id, surname, name, day, month, year);
                     student.setGrades(grades);
                     database.addStudent(student);
                 }
-                if (schoolBranch.equals("class project.branch.TechnicalStudent")) {
+                if (schoolBranch.equals("Technic")) {
                     student = new TechnicalStudent(id, surname, name, day, month, year);
                     student.setGrades(grades);
                     database.addStudent(student);
                 }
-                if (schoolBranch.equals("class project.branch.CombinedStudent")) {
+                if (schoolBranch.equals("Combined")) {
                     student = new CombinedStudent(id, surname, name, day, month, year);
                     student.setGrades(grades);
                     database.addStudent(student);
