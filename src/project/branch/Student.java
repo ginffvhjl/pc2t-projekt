@@ -67,7 +67,6 @@ public abstract class Student implements Comparable<Student> {
         }
     }
 
-    // TODO school branch
     public String toString() {
         return ConsoleColours.CYAN + "ID: " + this.id + ConsoleColours.RESET +
                 "\nName and surname: " + this.name + " " + this.surname +

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class HumaneAbility {
     public ZodiacSign getZodiacSign(int year, int month, int day) {
         LocalDate birthDate = LocalDate.of(year, month, day);
-        if (birthDate.isBefore(LocalDate.of(year, 1, 20))) return ZodiacSign.Capricornus;
+        if (birthDate.isBefore(LocalDate.of(year, 1, 20))) return ZodiacSign.Capricorn;
         if (birthDate.isBefore(LocalDate.of(year, 2, 20))) return ZodiacSign.Aquarius;
         if (birthDate.isBefore(LocalDate.of(year, 3, 20))) return ZodiacSign.Pisces;
         if (birthDate.isBefore(LocalDate.of(year, 4, 20))) return ZodiacSign.Aries;
@@ -17,7 +17,7 @@ public class HumaneAbility {
         if (birthDate.isBefore(LocalDate.of(year, 10, 23))) return ZodiacSign.Libra;
         if (birthDate.isBefore(LocalDate.of(year, 11, 22))) return ZodiacSign.Scorpius;
         if (birthDate.isBefore(LocalDate.of(year, 12, 22))) return ZodiacSign.Sagittarius;
-        return ZodiacSign.Capricornus;
+        return ZodiacSign.Capricorn;
     }
 
 }

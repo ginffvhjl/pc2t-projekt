@@ -4,6 +4,7 @@ import project.branch.CombinedStudent;
 import project.branch.HumaneStudent;
 import project.branch.Student;
 import project.branch.TechnicalStudent;
+import project.sql.SQLOperations;
 
 import java.io.*;
 import java.util.*;
@@ -133,9 +134,20 @@ public class Database {
                 }
             }
         } catch (FileNotFoundException e) {
-            System.out.println("File does not exist.");
+            System.out.println(ConsoleColours.RED + "File does not exist." + ConsoleColours.RESET);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void insertDatabaseIntoSQL(SQLOperations sqlOperations) {
+        for (Student student : this.database.values()) {
+            sqlOperations.insertIntoTable(student, student.getBranchName());
+        }
+        System.out.println(ConsoleColours.GREEN + "Successful." + ConsoleColours.RESET);
+    }
+
+    public void loadDatabaseFromSQL(SQLOperations sqlOperations) {
+        database = sqlOperations.loadFromTable();
     }
 }

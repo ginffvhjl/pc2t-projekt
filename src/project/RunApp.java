@@ -2,6 +2,7 @@ package project;
 
 import project.ability.ZodiacSign;
 import project.branch.*;
+import project.sql.SQLOperations;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -29,6 +30,8 @@ public class RunApp {
             System.out.println(" 09  Load database from file");
             System.out.println(" 10  Save database in file");
             System.out.println(" 11  Delete database");
+            System.out.println(" 12  Save to SQL");
+            System.out.println(" 13  Load from SQL");
             System.out.println(" 00  Exit\n");
 
             int option = onlyInt(sc);
@@ -38,6 +41,8 @@ public class RunApp {
             int day;
             int month;
             int year;
+
+            SQLOperations sqlOperations = new SQLOperations();
 
             switch (option) {
                 case 1:
@@ -64,10 +69,18 @@ public class RunApp {
 
                     Student student = null;
                     switch (branch) {
-                        case 1 -> student = new TechnicalStudent(id, surname, name, day, month, year);
-                        case 2 -> student = new HumaneStudent(id, surname, name, day, month, year);
-                        case 3 -> student = new CombinedStudent(id, surname, name, day, month, year);
-                        default -> System.out.println("Incorrect input.");
+                        case 1:
+                            student = new TechnicalStudent(id, surname, name, day, month, year);
+                            break;
+                        case 2:
+                            student = new HumaneStudent(id, surname, name, day, month, year);
+                            break;
+                        case 3:
+                            student = new CombinedStudent(id, surname, name, day, month, year);
+                            break;
+                        default:
+                            System.out.println("Incorrect input.");
+                            break;
                     }
                     if (student != null) {
                         studentDatabase.addStudent(student);
@@ -156,6 +169,17 @@ public class RunApp {
                     break;
                 case 11:
                     studentDatabase = new Database();
+                    break;
+                case 12:
+                    sqlOperations.getConnection();
+                    sqlOperations.createTable();
+                    studentDatabase.insertDatabaseIntoSQL(sqlOperations);
+                    sqlOperations.closeConnection();
+                    break;
+                case 13:
+                    sqlOperations.getConnection();
+                    studentDatabase.loadDatabaseFromSQL(sqlOperations);
+                    sqlOperations.closeConnection();
                     break;
                 case 0:
                     run = false;

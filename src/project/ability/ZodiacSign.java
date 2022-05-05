@@ -1,7 +1,6 @@
 package project.ability;
 
 public enum ZodiacSign {
-
     Aries,
     Taurus,
     Gemini,
@@ -11,7 +10,7 @@ public enum ZodiacSign {
     Libra,
     Scorpius,
     Sagittarius,
-    Capricornus,
+    Capricorn,
     Aquarius,
     Pisces
 }
