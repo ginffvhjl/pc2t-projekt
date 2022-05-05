@@ -50,7 +50,7 @@ public class SQLOperations {
                     "DAY INT NOT NULL, " +
                     "MONTH INT NOT NULL, " +
                     "YEAR INT NOT NULL, " +
-                    "GRADES TEXT NOT NULL)" +
+                    "GRADES TEXT NOT NULL," +
                     "BRANCH TEXT NOT NULL)";
             statement.executeUpdate(sql);
         } catch (Exception e) {
@@ -72,6 +72,7 @@ public class SQLOperations {
             preparedStatement.setInt(6, student.getYear());
             preparedStatement.setString(7, String.valueOf(student.getGrades()));
             preparedStatement.setString(8, branch);
+            preparedStatement.execute();
 
         } catch (Exception e) {
             System.out.println(ConsoleColours.RED + "An error occurred." + ConsoleColours.RESET);
